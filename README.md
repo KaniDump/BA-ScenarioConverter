@@ -2,7 +2,7 @@
 A desktop UI application to streamline localization workflows for Blue Archive scenario scripts. The converter supports:
 
 - EN → JP: Overwrite Japanese script fields with English translations.
-- JP → JP: Migrate old-format Japanese scripts to a new and update data.
+- JP → JP: Migrate old-format Japanese scripts to a new and updated data.
 
 ## 🚀 Features
 - One‑click conversion of individual JSON files.
@@ -28,7 +28,7 @@ A desktop UI application to streamline localization workflows for Blue Archive s
 - ScenarioScriptExcel
   
 ## 📦 Installation
-- Go to the [releases page](https://github.com/your-org/blue-archive-script-converter/releases) and download the latest version for your platform.
+- Go to the [releases page](https://github.com/ArkanDash/BA-ScenarioConverter/releases/) and download the latest version for your platform.
 
 ## 🛠 Building
 1. Clone the repo:
