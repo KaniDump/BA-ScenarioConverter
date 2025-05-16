@@ -4,13 +4,33 @@ A desktop UI application to streamline localization workflows for Blue Archive s
 - EN → JP: Overwrite Japanese script fields with English translations.
 - JP → JP: Migrate old-format Japanese scripts to a new JSON schema.
 
-🚀 Features
+## 🚀 Features
 - One‑click conversion of individual JSON files.
 - Batch processing: select an entire folder and convert every supported Excel‑exported JSON.
 - Wide coverage: handles scenario scripts plus dozens of other localization tables (dialogs, skills, gacha shop, character profiles, etc.).
 - Data‑safe: preserves untranslated fields; skips entries when no translation is present.
 
-📦 Installation
+## 💾 Supported Excel:
+- LocalizeCharProfileExcelTable
+- LocalizeErrorExcel
+- LocalizeEtcExcel
+- LocalizeExcel
+- LocalizeSkillExcel
+- LocalizeGachaShopExcelTable
+- TutorialCharacterDialogExcel
+- AcademyMessangerExcelTable
+- CharacterDialogFieldExcelTable
+- CharacterDialogEventExcel
+- CharacterDialogExcel
+- CharacterDialogSubtitleExcel
+- CharacterVoiceSubtitleExcel
+- ScenarioCharacterNameExcel
+- ScenarioScriptExcel
+  
+## 📦 Installation
+- Go to the [releases page](https://github.com/your-org/blue-archive-script-converter/releases) and download the latest version for your platform.
+
+## 🛠 Building
 1. Clone the repo:
 
 ```bash
