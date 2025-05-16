@@ -1,0 +1,15 @@
+# python
+__pycache__
+.venv
+
+# build files
+build
+dist
+
+# app files
+EN_Script
+JP_Script
+EN_to_JP
+OLD_JP_Script
+NEW_JP_Script
+JP_to_JP
