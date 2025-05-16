@@ -2,7 +2,7 @@
 A desktop UI application to streamline localization workflows for Blue Archive scenario scripts. The converter supports:
 
 - EN → JP: Overwrite Japanese script fields with English translations.
-- JP → JP: Migrate old-format Japanese scripts to a new JSON schema.
+- JP → JP: Migrate old-format Japanese scripts to a new and update data.
 
 ## 🚀 Features
 - One‑click conversion of individual JSON files.
@@ -52,5 +52,5 @@ pip install -r requirements.txt
 
 4. Run the UI launcher:
 ```bash
-python launcher.py
+python main.py
 ```
