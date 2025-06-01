@@ -17,25 +17,26 @@ from lib.converter.scenariocharacternameexcel import ScenarioCharacterNameExcelC
 from lib.converter.scanarioscriptexcel import ScenarioScriptExcelConverter
 
 _CONVERTERS: dict[str, type] = {
-    "LocalizeCharProfileExcelTable": LocalizeCharProfileExcelConverter,
-    "LocalizeErrorExcel": LocalizeErrorExcelConverter,
-    "LocalizeEtcExcel": LocalizeEtcExcelConverter,
-    "LocalizeExcel": LocalizeExcelConverter,
-    "LocalizeSkillExcel": LocalizeSkillExcelConverter,
-    "LocalizeGachaShopExcelTable": LocalizeGachaShopExcelConverter,
-    "TutorialCharacterDialogExcel": TutorialCharacterDialogExcelConverter,
     "AcademyMessanger1ExcelTable": AcademyMessangerExcelTableConverter,
     "AcademyMessanger2ExcelTable": AcademyMessangerExcelTableConverter,
     "AcademyMessanger3ExcelTable": AcademyMessangerExcelTableConverter,
     "AcademyMessanger4ExcelTable": AcademyMessangerExcelTableConverter,
     "AcademyMessangerExcelTable": AcademyMessangerExcelTableConverter,
-    "CharacterDialogFieldExcelTable": CharacterDialogFieldExcelConverter,
     "CharacterDialogEventExcel": CharacterDialogEventExcelConverter,
     "CharacterDialogExcel": CharacterDialogExcelConverter,
+    "CharacterDialogFieldExcelTable": CharacterDialogFieldExcelConverter,
     "CharacterDialogSubtitleExcel": CharacterDialogSubtitleExcelConverter,
     "CharacterVoiceSubtitleExcel": CharacterVoiceSubtitleExcelConverter,
+    "LocalizeCharProfileExcelTable": LocalizeCharProfileExcelConverter,
+    "LocalizeErrorExcel": LocalizeErrorExcelConverter,
+    "LocalizeEtcExcel": LocalizeEtcExcelConverter,
+    "LocalizeExcel": LocalizeExcelConverter,
+    "LocalizeGachaShopExcel": LocalizeGachaShopExcelConverter, # jp
+    "LocalizeGachaShopExcelTable": LocalizeGachaShopExcelConverter, # global
+    "LocalizeSkillExcel": LocalizeSkillExcelConverter,
     "ScenarioCharacterNameExcel": ScenarioCharacterNameExcelConverter,
     "ScenarioScriptExcel": ScenarioScriptExcelConverter,
+    "TutorialCharacterDialogExcel": TutorialCharacterDialogExcelConverter,
 }
 
 def en_to_jp_data_conversion(
@@ -83,11 +84,12 @@ def convert_single_en_to_jp(filename: str, en_script_folder: str, jp_script_fold
     source_file_path = Path(jp_script_folder) / filename
     output_file_path = Path(output_folder) / filename
 
-    if reference_file_path.exists() and source_file_path.exists():
-        return en_to_jp_data_conversion(reference_file_path, source_file_path, output_file_path)
-    else:
-        print(f"Error: Source file {source_file_path} not found for EN to JP conversion.")
-        return False
+    return en_to_jp_data_conversion(reference_file_path, source_file_path, output_file_path)
+    # if reference_file_path.exists() and source_file_path.exists():
+    #     return en_to_jp_data_conversion(reference_file_path, source_file_path, output_file_path)
+    # else:
+    #     print(f"Error: Source file {source_file_path} not found for EN to JP conversion.")
+    #     return False
 
 def convert_single_jp_to_jp(filename: str, old_jp_folder: str, new_jp_folder: str, output_folder: str) -> bool:
     """

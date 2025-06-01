@@ -1,4 +1,5 @@
 import json
+from pathlib import Path
 from tqdm import tqdm
 from pydantic import BaseModel, Field
 
@@ -12,11 +13,21 @@ class LocalizeGachaShopExcelConverter:
         en_data = {}
         jp_data = {}
 
+        # Global to JP patching
+        source_file_path = Path(self.source_path)
+        stem = source_file_path.stem
+        if stem.endswith("Table"):
+            stem = stem[:-len("Table")]
+        new_filename = f"{stem}{source_file_path.suffix}"
+        new_full_path = source_file_path.with_name(new_filename)
+        output_path = Path(self.output_path).with_name(new_filename)
+        # print(new_full_path)
+
         # Read JSON files
         with open(self.reference_path, "r", encoding="utf-8") as infile:
             en_data = json.load(infile).get("DataList")
-        with open(self.source_path, "r", encoding="utf-8") as infile:
-            jp_data = json.load(infile).get("DataList")
+        with open(new_full_path, "r", encoding="utf-8") as infile:
+            jp_data = json.load(infile)
 
         # Mapping the english data
         en_data_model: dict[int, LocalizeGachaShopExcelEN] = {}
@@ -55,9 +66,8 @@ class LocalizeGachaShopExcelConverter:
             jp_rec.model_dump(by_alias=True)
             for jp_rec in output_data_model
         ]
-        datalist = {"DataList": serializable_data}
-        with open(self.output_path, "w", encoding="utf-8") as outfile:
-            json.dump(datalist, outfile, ensure_ascii=False, indent=2)
+        with open(output_path, "w", encoding="utf-8") as outfile:
+            json.dump(serializable_data, outfile, ensure_ascii=False, indent=2)
         print("Successfully converted LocalizeGachaShopExcel.json")
 
     def jp_to_jp_convert(self):
@@ -66,9 +76,9 @@ class LocalizeGachaShopExcelConverter:
 
         # Read JSON files
         with open(self.reference_path, "r", encoding="utf-8") as infile:
-            old_jp_data = json.load(infile).get("DataList")
+            old_jp_data = json.load(infile)
         with open(self.source_path, "r", encoding="utf-8") as infile:
-            new_jp_data = json.load(infile).get("DataList")
+            new_jp_data = json.load(infile)
 
         # Mapping the old data
         old_jp_data: dict[int, LocalizeGachaShopExcelJP] = {}
@@ -106,9 +116,8 @@ class LocalizeGachaShopExcelConverter:
             jp_rec.model_dump(by_alias=True)
             for jp_rec in output_data_model
         ]
-        datalist = {"DataList": serializable_data}
         with open(self.output_path, "w", encoding="utf-8") as outfile:
-            json.dump(datalist, outfile, ensure_ascii=False, indent=2)
+            json.dump(serializable_data, outfile, ensure_ascii=False, indent=2)
         print("Successfully converted LocalizeGachaShopExcel.json")
 
 class LocalizeGachaShopExcelEN(BaseModel):

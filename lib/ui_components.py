@@ -3,12 +3,10 @@ from PySide6.QtWidgets import (
     QPushButton, QLabel, QListWidgetItem
 )
 from PySide6.QtCore import Qt, Signal
-import os
 
 from lib.utils import get_common_files, ensure_dir_exists
 from config import FILE_EXTENSION
 from lib.converter_logic import convert_single_en_to_jp, convert_single_jp_to_jp
-
 
 class ConversionTab(QWidget):
     conversion_started = Signal(str)

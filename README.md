@@ -16,7 +16,7 @@ A desktop UI application to streamline localization workflows for Blue Archive s
 - LocalizeEtcExcel
 - LocalizeExcel
 - LocalizeSkillExcel
-- LocalizeGachaShopExcelTable
+- LocalizeGachaShopExcel (ExcelTable if Global)
 - TutorialCharacterDialogExcel
 - AcademyMessangerExcelTable
 - CharacterDialogFieldExcelTable
@@ -34,7 +34,7 @@ A desktop UI application to streamline localization workflows for Blue Archive s
 1. Clone the repo:
 
 ```bash
-git clone https://github.com/your‑org/blue‑archive‑script‑converter.git
+git clone https://github.com/ArkanDash/BA-ScenarioConverter.git
 cd blue‑archive‑script‑converter
 ```
 

@@ -19,7 +19,8 @@ def get_common_files(folder1_path: str, folder2_path: str, extension: str) -> li
     files1 = {f.name for f in path1.glob(f"*{extension}") if f.is_file()}
     files2 = {f.name for f in path2.glob(f"*{extension}") if f.is_file()}
     
-    common = sorted(list(files1.intersection(files2)))
+    # common = sorted(list(files1.intersection(files2)))
+    common = sorted(list(files1))
     return common
 
 def ensure_dir_exists(dir_path: str | Path):
