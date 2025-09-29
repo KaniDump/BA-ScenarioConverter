@@ -4,6 +4,8 @@ A desktop UI application to streamline localization workflows for Blue Archive s
 - EN → JP: Overwrite Japanese script fields with English translations.
 - JP → JP: Migrate old-format Japanese scripts to a new and updated data.
 
+Only Compatible with 1.82 Global and 1.61 Japan.
+
 ## 🚀 Features
 - One‑click conversion of individual JSON files.
 - Batch processing: select an entire folder and convert every supported Excel‑exported JSON.
@@ -16,7 +18,7 @@ A desktop UI application to streamline localization workflows for Blue Archive s
 - LocalizeEtcExcel
 - LocalizeExcel
 - LocalizeSkillExcel
-- LocalizeGachaShopExcel (ExcelTable if Global)
+- LocalizeGachaShopExcel
 - TutorialCharacterDialogExcel
 - AcademyMessangerExcelTable
 - CharacterDialogFieldExcelTable
@@ -50,7 +52,13 @@ source .venv/bin/activate      # Linux/macOS
 pip install -r requirements.txt
 ```
 
-4. Run the UI launcher:
-```bash
-python main.py
-```
+4. Build/Run the application:
+    - Run the application:
+        ```bash
+        python main.py
+        ```
+
+    - Build the executable:
+        ```bash
+        pyinstaller --onefile --name BA-ScenarioEditor main.py
+        ```

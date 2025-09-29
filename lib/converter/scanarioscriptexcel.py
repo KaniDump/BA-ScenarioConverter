@@ -1,24 +1,17 @@
-import json
-from pathlib import Path
-from tqdm import tqdm
 from collections import defaultdict, deque
 from pydantic import BaseModel, Field
+from lib.converter import excelhelper
 
 class ScenarioScriptExcelConverter:
-    def __init__(self, reference_path: Path, source_path: Path, output_path: Path):
-        self.reference_path: Path = reference_path
-        self.source_path: Path = source_path
-        self.output_path: Path = output_path
+    def __init__(self, reference_path, source_path, output_path):
+        self.reference_path: str = reference_path
+        self.source_path: str = source_path
+        self.output_path: str = output_path
     
     def en_to_jp_convert(self):
-        en_data = {}
-        jp_data = {}
-
         # Read JSON files
-        with open(self.reference_path, "r", encoding="utf-8") as infile:
-            en_data = json.load(infile)
-        with open(self.source_path, "r", encoding="utf-8") as infile:
-            jp_data = json.load(infile)
+        en_data = excelhelper.read_excelt_json(self.reference_path)
+        jp_data = excelhelper.read_excelt_json(self.source_path)
 
         # Build lookup of EN models by GroupId
         en_lookup: dict[int, deque[ScenarioScriptExcelEN]] = defaultdict(deque)
@@ -45,19 +38,13 @@ class ScenarioScriptExcelConverter:
             jp_rec.model_dump(by_alias=True)
             for jp_rec in output_data_model
         ]
-        with open(self.output_path, "w", encoding="utf-8") as outfile:
-            json.dump(serializable_data, outfile, ensure_ascii=False, indent=2)
+        excelhelper.write_excelt_json(self.output_path, serializable_data)
         print("Successfully converted ScenarioScriptExcel.json")
     
     def jp_to_jp_convert(self):
-        old_jp_data = {}
-        new_jp_data = {}
-
         # Read JSON files
-        with open(self.reference_path, "r", encoding="utf-8") as infile:
-            old_jp_data = json.load(infile)
-        with open(self.source_path, "r", encoding="utf-8") as infile:
-            new_jp_data = json.load(infile)
+        old_jp_data = excelhelper.read_excelt_json(self.reference_path)
+        new_jp_data = excelhelper.read_excelt_json(self.source_path)
 
         # Build lookup of old models by GroupId
         old_lookup: dict[int, deque[ScenarioScriptExcelJP]] = defaultdict(deque)
@@ -84,8 +71,7 @@ class ScenarioScriptExcelConverter:
             jp_rec.model_dump(by_alias=True)
             for jp_rec in output_data_model
         ]
-        with open(self.output_path, "w", encoding="utf-8") as outfile:
-            json.dump(serializable_data, outfile, ensure_ascii=False, indent=2)
+        excelhelper.write_excelt_json(self.output_path, serializable_data)
         print("Successfully converted ScenarioScriptExcel.json")
 
 class ScenarioScriptExcelEN(BaseModel):

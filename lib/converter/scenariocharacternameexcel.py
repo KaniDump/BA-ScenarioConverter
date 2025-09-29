@@ -1,6 +1,5 @@
-import json
-from tqdm import tqdm
 from pydantic import BaseModel, Field
+from lib.converter import excelhelper
 
 class ScenarioCharacterNameExcelConverter:
     def __init__(self, reference_path, source_path, output_path):
@@ -9,14 +8,9 @@ class ScenarioCharacterNameExcelConverter:
         self.output_path: str = output_path
     
     def en_to_jp_convert(self):
-        en_data = {}
-        jp_data = {}
-
         # Read JSON files
-        with open(self.reference_path, "r", encoding="utf-8") as infile:
-            en_data = json.load(infile)
-        with open(self.source_path, "r", encoding="utf-8") as infile:
-            jp_data = json.load(infile)
+        en_data = excelhelper.read_excelt_json(self.reference_path)
+        jp_data = excelhelper.read_excelt_json(self.source_path)
 
         # Mapping the english data
         en_data_model: dict[int, ScenarioCharacterNameExcelEN] = {}
@@ -42,19 +36,13 @@ class ScenarioCharacterNameExcelConverter:
             jp_rec.model_dump(by_alias=True)
             for jp_rec in output_data_model
         ]
-        with open(self.output_path, "w", encoding="utf-8") as outfile:
-            json.dump(serializable_data, outfile, ensure_ascii=False, indent=2)
+        excelhelper.write_excelt_json(self.output_path, serializable_data)
         print("Successfully converted ScenarioCharacterNameExcel.json")
     
     def jp_to_jp_convert(self):
-        old_jp_data = {}
-        new_jp_data = {}
-
         # Read JSON files
-        with open(self.reference_path, "r", encoding="utf-8") as infile:
-            old_jp_data = json.load(infile)
-        with open(self.source_path, "r", encoding="utf-8") as infile:
-            new_jp_data = json.load(infile)
+        old_jp_data = excelhelper.read_excelt_json(self.reference_path)
+        new_jp_data = excelhelper.read_excelt_json(self.source_path)
 
         # Mapping the old data
         en_data_model: dict[int, ScenarioCharacterNameExcelJP] = {}
@@ -80,8 +68,7 @@ class ScenarioCharacterNameExcelConverter:
             jp_rec.model_dump(by_alias=True)
             for jp_rec in output_data_model
         ]
-        with open(self.output_path, "w", encoding="utf-8") as outfile:
-            json.dump(serializable_data, outfile, ensure_ascii=False, indent=2)
+        excelhelper.write_excelt_json(self.output_path, serializable_data)
         print("Successfully converted ScenarioCharacterNameExcel.json")
 
 class ScenarioCharacterNameExcelEN(BaseModel):

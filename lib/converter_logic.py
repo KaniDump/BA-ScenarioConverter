@@ -17,22 +17,21 @@ from lib.converter.scenariocharacternameexcel import ScenarioCharacterNameExcelC
 from lib.converter.scanarioscriptexcel import ScenarioScriptExcelConverter
 
 _CONVERTERS: dict[str, type] = {
-    "AcademyMessanger1ExcelTable": AcademyMessangerExcelTableConverter,
-    "AcademyMessanger2ExcelTable": AcademyMessangerExcelTableConverter,
-    "AcademyMessanger3ExcelTable": AcademyMessangerExcelTableConverter,
-    "AcademyMessanger4ExcelTable": AcademyMessangerExcelTableConverter,
-    "AcademyMessangerExcelTable": AcademyMessangerExcelTableConverter,
+    # Excel.zip
+    "CharacterDialogFieldExcelTable": CharacterDialogFieldExcelConverter,
+    "LocalizeCharProfileExcelTable": LocalizeCharProfileExcelConverter, # global
+
+    # ExcelDB
+    "LocalizeCharProfileExcel": LocalizeCharProfileExcelConverter, # jp
+    "AcademyMessangerExcel": AcademyMessangerExcelTableConverter,
     "CharacterDialogEventExcel": CharacterDialogEventExcelConverter,
     "CharacterDialogExcel": CharacterDialogExcelConverter,
-    "CharacterDialogFieldExcelTable": CharacterDialogFieldExcelConverter,
     "CharacterDialogSubtitleExcel": CharacterDialogSubtitleExcelConverter,
     "CharacterVoiceSubtitleExcel": CharacterVoiceSubtitleExcelConverter,
-    "LocalizeCharProfileExcelTable": LocalizeCharProfileExcelConverter,
     "LocalizeErrorExcel": LocalizeErrorExcelConverter,
     "LocalizeEtcExcel": LocalizeEtcExcelConverter,
     "LocalizeExcel": LocalizeExcelConverter,
-    "LocalizeGachaShopExcel": LocalizeGachaShopExcelConverter, # jp
-    "LocalizeGachaShopExcelTable": LocalizeGachaShopExcelConverter, # global
+    "LocalizeGachaShopExcel": LocalizeGachaShopExcelConverter,
     "LocalizeSkillExcel": LocalizeSkillExcelConverter,
     "ScenarioCharacterNameExcel": ScenarioCharacterNameExcelConverter,
     "ScenarioScriptExcel": ScenarioScriptExcelConverter,
