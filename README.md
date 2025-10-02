@@ -20,7 +20,7 @@ Only Compatible with 1.82 Global and 1.61 Japan.
 - LocalizeSkillExcel
 - LocalizeGachaShopExcel
 - TutorialCharacterDialogExcel
-- AcademyMessangerExcelTable
+- AcademyMessangerExcel
 - CharacterDialogFieldExcelTable
 - CharacterDialogEventExcel
 - CharacterDialogExcel
