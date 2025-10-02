@@ -60,5 +60,5 @@ pip install -r requirements.txt
 
     - Build the executable:
         ```bash
-        pyinstaller --onefile --name BA-ScenarioEditor main.py
+        pyinstaller --onefile --name BA-ScenarioConverter main.py
         ```

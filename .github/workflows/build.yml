@@ -32,11 +32,11 @@ jobs:
 
     - name: Build executable
       run: |
-        pyinstaller --onefile --name BA-ScenarioEditor main.py
+        pyinstaller --onefile --name BA-ScenarioConverter main.py
 
     - name: Upload artifact
       uses: actions/upload-artifact@v4
       with:
-        name: BA-ScenarioEditor-${{ matrix.os }}
+        name: BA-ScenarioConverter-${{ matrix.os }}
         path: |
-          dist/BA-ScenarioEditor*
+          dist/BA-ScenarioConverter*

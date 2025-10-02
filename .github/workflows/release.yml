@@ -38,12 +38,12 @@ jobs:
 
     - name: Build executable
       run: |
-        pyinstaller --onefile --name BA-ScenarioEditor main.py
+        pyinstaller --onefile --name BA-ScenarioConverter main.py
 
     - name: Upload release asset
       uses: softprops/action-gh-release@v1
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
-        files: dist/BA-ScenarioEditor*
+        files: dist/BA-ScenarioConverter*
         name: ${{ github.event.inputs.release-name }}
         tag_name: ${{ github.event.inputs.release-tag }}

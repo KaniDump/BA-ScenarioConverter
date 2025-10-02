@@ -22,7 +22,7 @@ exe = EXE(
     a.binaries,
     a.datas,
     [],
-    name='BA-ScenarioEditor',
+    name='BA-ScenarioConverter',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
