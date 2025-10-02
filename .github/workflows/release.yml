@@ -13,11 +13,17 @@ on:
         default: 'v1.0.0'
 
 jobs:
-  build-and-release:
+  release:
+    name: Release Build for ${{ matrix.os }}
+    runs-on: ${{ matrix.runner }}
+
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest]
-    runs-on: ${{ matrix.os }}
+        include:
+          - os: linux
+            runner: ubuntu-latest
+          - os: windows
+            runner: windows-latest
     
     permissions:
       contents: write
@@ -38,7 +44,7 @@ jobs:
 
     - name: Build executable
       run: |
-        pyinstaller --onefile --name BA-ScenarioConverter main.py
+        pyinstaller --onefile --name BA-ScenarioConverter-${{ matrix.os }} main.py
 
     - name: Upload release asset
       uses: softprops/action-gh-release@v1

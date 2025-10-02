@@ -10,11 +10,17 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-executable:
+  build:
+    name: Build for ${{ matrix.os }}
+    runs-on: ${{ matrix.runner }}
+
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest]
-    runs-on: ${{ matrix.os }}
+        include:
+          - os: linux
+            runner: ubuntu-latest
+          - os: windows
+            runner: windows-latest
 
     steps:
     - name: Checkout repository
